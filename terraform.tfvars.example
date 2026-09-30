@@ -1,0 +1,24 @@
+# Copy to terraform.tfvars (gitignored) and fill in real values.
+# Never commit terraform.tfvars - it holds real IPs, hostnames, and a
+# live-ish API token, none of which belong in a public repo.
+
+proxmox_endpoint  = "https://<your-proxmox-host>:8006"
+proxmox_api_token = "<user>@<realm>!<token-id>=<token-secret>"
+proxmox_insecure  = true
+
+node_name        = "<node-name>"
+pool_id          = "<resource-pool-name>"
+template_file_id = "local:vztmpl/debian-13-standard_13.1-2_amd64.tar.zst"
+storage_id       = "local-lvm"
+network_bridge   = "vmbr0"
+
+container_hostname = "lab-vm-as-code-demo"
+
+container_ipv4_cidr    = "<a known-unused static IP>/24"
+container_ipv4_gateway = "<your LAN gateway>"
+
+ssh_public_key_path  = ".secrets/lab-vm-as-code.pub"
+ssh_private_key_path = ".secrets/lab-vm-as-code"
+
+syslog_target    = "<siem-host>:<port>"
+allowed_ssh_cidr = "<your-lab-subnet>/24"
